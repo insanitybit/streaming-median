@@ -2,6 +2,11 @@
 name = "streaming-median"
 version = "0.1.0"
 authors = ["Insanitybit <insanitybit@gmail.com>"]
+description = "Provides a structure for calculating median values"
+license = "MIT OR Apache-2.0"
+keywords = ["median", "medians"]
+
+
 
 [dependencies]
 
