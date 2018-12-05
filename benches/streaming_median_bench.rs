@@ -1,17 +1,14 @@
 #[macro_use]
 extern crate criterion;
 extern crate xorshift;
-//    #![allow(unused_imports)]
-//    use super::*;
 extern crate streaming_median;
 
 use streaming_median::StreamingMedian;
 
 use criterion::Criterion;
 use xorshift::{Xoroshiro128, SeedableRng};
-use std::time::SystemTime;
-use std::time::UNIX_EPOCH;
 use xorshift::Rng;
+use criterion::black_box;
 
 fn bench_insert_and_calculate(c: &mut Criterion) {
 
@@ -29,12 +26,12 @@ fn bench_insert_and_calculate(c: &mut Criterion) {
 fn bench_insert_and_calculate_rand(c: &mut Criterion) {
 
     c.bench_function("insert_and_calculate_rand", |b| {
-        let mut rng = Xoroshiro128::from_seed(&[1, 71, 1223]);
+        let mut rng = black_box(Xoroshiro128::from_seed(&[1, 71, 1223]));
 
         let mut median_tracker = StreamingMedian::new(123_000);
 
         b.iter(|| {
-            median_tracker.insert_and_calculate(rng.gen());
+            black_box(median_tracker.insert_and_calculate(rng.gen()));
         });
     });
 }
@@ -43,13 +40,13 @@ fn bench_insert_and_calculate_rand(c: &mut Criterion) {
 fn bench_insert_and_calculate_rand_within_bound(c: &mut Criterion) {
 
     c.bench_function("insert_and_calculate_rand_within_bound", |b| {
-        let mut rng = Xoroshiro128::from_seed(&[1, 71, 1223]);
+        let mut rng = black_box(Xoroshiro128::from_seed(&[1, 71, 1223]));
 
         let mut median_tracker = StreamingMedian::new(5);
 
         rng.gen_range(1, 10);
         b.iter(|| {
-            median_tracker.insert_and_calculate(rng.gen());
+            black_box(median_tracker.insert_and_calculate(rng.gen()));
         });
     });
 }

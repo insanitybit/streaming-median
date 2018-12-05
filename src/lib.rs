@@ -286,34 +286,3 @@ mod test {
         }
     }
 }
-
-//#[cfg(not(test))]
-//mod bench {
-//    #![allow(unused_imports)]
-//    use super::*;
-//    use test::Bencher;
-//    use xorshift::{Xoroshiro128, Rng, SeedableRng};
-//    use std::time::{SystemTime, UNIX_EPOCH};
-//
-//
-//    #[bench]
-//    fn bench_insert_and_calculate(b: &mut Bencher) {
-//        let mut median_tracker = StreamingMedian::new(123_000);
-//
-//        b.iter(|| {
-//            median_tracker.insert_and_calculate(100);
-//        });
-//    }
-//
-//    #[bench]
-//    fn bench_insert_and_calculate_rand(b: &mut Bencher) {
-//        let t = millis(SystemTime::now().duration_since(UNIX_EPOCH).unwrap());
-//        let rng = Xoroshiro128::from_seed(&[t, 71, 1223]);
-//
-//        let mut median_tracker = StreamingMedian::new(123_000);
-//
-//        b.iter(|| {
-//            median_tracker.insert_and_calculate(rng.gen());
-//        });
-//    }
-//}
