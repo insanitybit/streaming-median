@@ -1,9 +1,12 @@
 # streaming-median
-A highly specialized data structure for calculating median values
+A highly specialized data structure for calculating median values 
 
 **Note that this library uses unsafe**
 
-StreamingMedian only supports a very, very specific use case.
+StreamingMedian only supports a very, very specific use case. When you want to
+generate the median value, and update it every time. For example, if you want to
+track the median time it takes for an operation to complete, updating it every time,
+and only taking the last 64 timings into account.
 
 It only supports medians over a range of 64 values. With int generics I could
 make this arbitrary, but it suits my needs. PRs welcome if you want to add
