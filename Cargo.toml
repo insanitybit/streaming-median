@@ -1,0 +1,16 @@
+[package]
+name = "streaming-median"
+version = "0.1.0"
+authors = ["Insanitybit <insanitybit@gmail.com>"]
+
+[dependencies]
+
+arraydeque = "0.4.3"
+criterion = "0.2.5"
+xorshift = "*"
+quickcheck = "0.7.2"
+rand = "0.6.1"
+
+[[bench]]
+name = "streaming_median_bench"
+harness = false
