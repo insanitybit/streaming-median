@@ -23,8 +23,6 @@ impl StreamingMedian {
     pub fn new(initial_median: u32) -> StreamingMedian {
         let data = ArrayDeque::from_iter(iter::repeat(initial_median).take(64));
 
-        // We use unsafe here and then immediately assign values to the
-        // unused space
         let mut sorted: [u32; 64] = [0; 64];
 
         for (i, t) in data.iter().enumerate() {
